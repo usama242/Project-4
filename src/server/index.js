@@ -3,6 +3,7 @@ const express = require("express");
 const mockAPIResponse = require("./mockAPI.js");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const requestPost = require("./requestHandler");
 
 const app = express();
 
@@ -20,12 +21,14 @@ app.use(express.static("dist"));
 app.get("/", function (req, res) {
   res.sendFile(path.resolve("dist/index.html"));
 });
-
+const port = 8000;
 // designates what port the app will listen to for incoming requests
-app.listen(8000, function () {
-  console.log("The app is running on port 8000!");
+app.listen(port, function () {
+  console.log(`The app is running on port ${port}!`);
 });
 
 app.get("/test", function (req, res) {
   res.send(mockAPIResponse);
 });
+
+app.post("/article", requestPost.validateInput, requestPost.requestHandler);
