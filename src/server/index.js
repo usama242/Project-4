@@ -32,3 +32,5 @@ app.get("/test", function (req, res) {
 });
 
 app.post("/article", requestPost.validateInput, requestPost.requestHandler);
+
+exports.app = app;
