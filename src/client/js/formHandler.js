@@ -14,7 +14,7 @@ function handleSubmit(event) {
       body: JSON.stringify({ text: input_url[0].value }),
     })
       .then((res) => res.json())
-      .then(function (res) {
+      .then((res) => {
         console.log(res);
         // update HTML dynamically
         document.querySelector("#polarity").innerHTML =
